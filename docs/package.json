@@ -9,8 +9,7 @@
     "export-server": "cd out && python -m SimpleHTTPServer 8000",
     "fix-markdown": "node ./transition/fix-markdown.js",
     "import-react-native-docs": "node ./scripts/import-react-native-docs.js",
-    "test-links": "wget --page-requisites --spider --random-wait --recursive",
-    "test-links:all": "scripts/test-links-all-versions.sh"
+    "test-links": "blc --recursive --exclude-external --filter-level 2"
   },
   "dependencies": {
     "@mdx-js/mdx": "^0.16.8",
@@ -38,6 +37,7 @@
     "smoothscroll-polyfill": "0.4.3"
   },
   "devDependencies": {
+    "broken-link-checker": "^0.7.8",
     "minimist": "^1.2.0",
     "prettier": "^1.15.3"
   }
