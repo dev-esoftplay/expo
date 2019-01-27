@@ -1,3 +1,4 @@
+import { UnavailabilityError } from 'expo-errors';
 import { Platform, processColor } from 'react-native';
 
 import ExpoCalendar from './ExpoCalendar';
@@ -437,8 +438,8 @@ export async function deleteReminderAsync(id: string): Promise<void> {
 } // iOS
 
 export async function getSourcesAsync(): Promise<Source[]> {
-  if (Platform.OS === 'android') {
-    throw new Error('getSourcesAsync is not available on Android');
+  if (!ExpoCalendar.getSourcesAsync) {
+    throw new UnavailabilityError('Calendar', 'getSourcesAsync');
   }
   return ExpoCalendar.getSourcesAsync();
 } // iOS
